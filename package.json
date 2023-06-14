@@ -1,0 +1,22 @@
+{
+  "name": "expression-creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node build\\index.js",
+    "start": "npx concurrently -k -r \"tsc -w\" \"tsc-alias -w\"",
+    "clean": "rd build /s /q",
+    "compile": "set PKG_CACHE_PATH=build\\.pkg_cache&& npx pkg build\\index.js -o build\\expression-creator.exe"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "concurrently": "^8.0.1",
+    "pkg": "^5.8.1",
+    "tsc-alias": "^1.8.5",
+    "typescript": "^5.0.4"
+  }
+}
