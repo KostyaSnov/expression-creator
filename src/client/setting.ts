@@ -49,11 +49,13 @@ const functionCreatorsGenerators: Readonly<Partial<Record<number, ValueGenerator
 };
 
 
+const dummyVariable = new Variable("dummy");
 const aVariable = new Variable("a");
 const bVariable = new Variable("b");
 const cVariable = new Variable("c");
 const dVariable = new Variable("d");
 const variablesGenerators: Readonly<Partial<Record<number, ValueGenerator<Variable>>>> = {
+    0: new SingleGenerator(dummyVariable),
     1: new SingleGenerator(aVariable),
     2: new CyclicGenerator([aVariable, bVariable]),
     3: new CyclicGenerator([aVariable, bVariable, cVariable]),

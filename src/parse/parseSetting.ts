@@ -70,9 +70,12 @@ type FunctionCreator = Readonly<{
     numberArgs?: number
 }>;
 type FunctionCreators = Readonly<Partial<Record<string, FunctionCreator>>>;
-const getFunctionCreator = (constructor: new (...args: Node[]) => Function): FunctionCreator => ({
+const getFunctionCreator = (
+    constructor: new (...args: Node[]) => Function,
+    numberArgs = 1
+): FunctionCreator => ({
     create: constructorToArray(constructor),
-    numberArgs: constructor.length
+    numberArgs
 });
 
 const tangentCreator = getFunctionCreator(Tangent);
@@ -105,7 +108,7 @@ const signCreator = getFunctionCreator(Sign);
 const baseFunctionCreators: FunctionCreators = {
     ln: getFunctionCreator(NaturalLogarithm),
     lg: getFunctionCreator(CommonLogarithm),
-    log: getFunctionCreator(Logarithm),
+    log: getFunctionCreator(Logarithm, 2),
 
     sin: getFunctionCreator(Sine),
     cos: getFunctionCreator(Cosine),
